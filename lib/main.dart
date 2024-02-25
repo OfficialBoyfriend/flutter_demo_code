@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:my_app/mqtt.dart';
 import 'package:my_app/src/rust/api/simple.dart';
 import 'package:my_app/src/rust/frb_generated.dart';
 
@@ -16,8 +18,15 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: const Text('flutter_rust_bridge quickstart')),
         body: Center(
-          child: Text(
-              'Action: Call Rust `greet("Tom")`\nResult: `${greet(name: "Tom")}`'),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Action: Call Rust `greet("Tom")`\nResult: `${greet(name: "Tom")}`',
+              ),
+              const MqttDemo(),
+            ],
+          ),
         ),
       ),
     );
